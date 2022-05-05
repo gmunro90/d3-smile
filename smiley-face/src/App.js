@@ -1,23 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react' 
+import ReactDOM from 'react-dom'
+import { arc } from 'd3'
+
+const width = 960 
+const height= 500
+
+const centerX = width / 2
+const centerY = height / 2
+const strokeWidth = 10
+const eyeOffSetX = 90
+const eyeOffSetY = 100
+const eyeRadius = 40
+const mouthWidth = 20
+const mouthRadius = 140
+
+const mouthArc = arc()
+    .innerRadius(mouthRadius)
+    .outerRadius(mouthWidth + mouthRadius)
+    .startAngle(Math.PI / 2)
+    .endAngle(Math.PI * 3/2);
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <svg width={width} height={height}>
+      <g transform={`translate(${centerX}, ${centerY})`}> 
+        
+        <circle
+        r={centerY - strokeWidth / 2 } fill="yellow" stroke="black"
+          stroke-width={strokeWidth} />
+
+
+        <circle cx={- eyeOffSetX}
+          cy={- eyeOffSetY}
+          r={eyeRadius}
+          stroke="black"
+        	stroke-width="10" />
+        <circle cx={eyeOffSetX}
+         cy={- eyeOffSetY}
+         r={eyeRadius}
+         stroke="black"
+         stroke-width="10" />
+
+      <path d={mouthArc()} />
+    </g>
+</svg>
     </div>
   );
 }
