@@ -1,7 +1,6 @@
 import React from 'react' 
-import ReactDOM from 'react-dom'
 import { arc } from 'd3'
-
+import BackgroundCircle from './components/BackgroundCircle'
 
 const width = 960 
 const height= 500
@@ -22,13 +21,10 @@ const mouthArc = arc()
 
   const App = () => (
     <svg width={width} height={height}>
-
       <g transform={`translate(${centerX}, ${centerY})`}> 
-             
-          <circle
-          r={centerY - strokeWidth / 2 } fill="yellow" stroke="black"
-          strokeWidth={strokeWidth} />
-     
+
+             <BackgroundCircle />   
+
        <circle cx={- eyeOffSetX}
                cy={- eyeOffSetY}
                r={eyeRadius}
