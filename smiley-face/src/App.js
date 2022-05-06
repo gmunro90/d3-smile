@@ -21,7 +21,7 @@ const mouthArc = arc()
     .endAngle(Math.PI * 3 / 2);
 
   const App = () => (
-    <svg>
+    <svg width={width} height={height}>
 
       <g transform={`translate(${centerX}, ${centerY})`}> 
              
